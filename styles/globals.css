@@ -1,0 +1,198 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Background: pure clean white with the faintest warm pink undertone */
+  --background: oklch(0.995 0.003 355);
+  --foreground: oklch(0.20 0.02 290);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.20 0.02 290);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.20 0.02 290);
+
+  /* Primary: Hot pink / magenta — the signature amigurumi accent */
+  --primary: oklch(0.55 0.28 350);   /* #e91e8c hot pink */
+  --primary-foreground: oklch(1 0 0);
+
+  /* Secondary: Teal/green — used for stat highlights */
+  --secondary: oklch(0.52 0.14 180); /* teal #009B8D */
+  --secondary-foreground: oklch(1 0 0);
+
+  --muted: oklch(0.97 0.008 355);
+  --muted-foreground: oklch(0.50 0.015 290);
+
+  /* Accent: Pale pink — for badge backgrounds */
+  --accent: oklch(0.95 0.04 355);
+  --accent-foreground: oklch(0.55 0.28 350);
+
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.92 0.01 340);
+  --input: oklch(0.92 0.01 340);
+  --ring: oklch(0.55 0.28 350);
+  --chart-1: oklch(0.55 0.28 350);
+  --chart-2: oklch(0.52 0.14 180);
+  --chart-3: oklch(0.28 0.09 290);
+  --chart-4: oklch(0.75 0.18 84);
+  --chart-5: oklch(0.65 0.22 45);
+  --radius: 0.75rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.65 0.25 350);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.55 0.28 350);
+  --chart-1: oklch(0.55 0.28 350);
+  --chart-2: oklch(0.52 0.14 180);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.55 0.28 350);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Custom Editorial Colors — updated to match amigurumiscrochet.com palette */
+  --color-heading: #2d1b49;       /* Deep purple/indigo for headlines */
+  --color-ami-forest: #009B8D;    /* Teal — stat accent */
+  --color-ami-carrot: #e91e8c;    /* Hot pink — CTA buttons (replaces orange) */
+  --color-ami-carrot-hover: #c9177a; /* Darker hot pink on hover */
+  --color-ami-coffee: #2d1b49;    /* Deep purple — outline button text */
+  --color-ami-btn-text: #ffffff;
+
+  /* Custom Editorial Float Animations */
+  --animate-float-slow: float-slow 10s ease-in-out infinite;
+  --animate-float-medium: float-medium 7s ease-in-out infinite;
+  --animate-float-fast: float-fast 5s ease-in-out infinite;
+  --animate-hero-in: hero-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  @keyframes float-slow {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(15px, -25px) scale(1.05); }
+  }
+  @keyframes float-medium {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-15px, -18px) scale(1.03); }
+  }
+  @keyframes float-fast {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(8px, -12px) scale(1.02); }
+  }
+  @keyframes hero-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Site-wide centered wrapper — constrains all content to 1280px centered */
+.site-wrapper {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  min-height: 100vh;
+  position: relative;
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  width: 100%;
+  
+  @variant sm {
+    max-width: 640px;
+    padding-inline: 2rem;
+  }
+  @variant md {
+    max-width: 768px;
+    padding-inline: 2.5rem;
+  }
+  @variant lg {
+    max-width: 1024px;
+    padding-inline: 3rem;
+  }
+  @variant xl {
+    max-width: 1200px;
+    padding-inline: 4rem;
+  }
+}

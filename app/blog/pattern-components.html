@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crochet Pattern — Component Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ─────────────────────────────────────────────
+       CSS CUSTOM PROPERTIES
+    ───────────────────────────────────────────── */
+    :root {
+      /* Brand / accent */
+      --brand-purple:   #5C1F7A;
+      --brand-pink:     #C2185B;
+      --brand-pink-bg:  #FDF0F5;
+      --brand-pink-border: #E8B4CB;
+
+      /* Info card */
+      --info-bg:        #EBF2FF;
+      --info-border:    #C7D9F9;
+      --info-icon-bg:   #3B82F6;
+      --info-icon-color:#FFFFFF;
+      --info-title:     #1E3A5F;
+      --info-text:      #2E5C8A;
+
+      /* Tip card */
+      --tip-bg:         #FFFBEA;
+      --tip-border:     #FEF3C7;
+      --tip-icon-color: #D97706;
+      --tip-title:      #92400E;
+      --tip-text:       #78350F;
+
+      /* Alert card */
+      --alert-bg:       #FFF5F5;
+      --alert-border:   #FECDD3;
+      --alert-icon-bg:  #EF4444;
+      --alert-icon-color:#FFFFFF;
+      --alert-title:    #991B1B;
+      --alert-text:     #B91C1C;
+
+      /* Round block */
+      --round-bg:       #F8FAFC;
+      --round-border:   #E2E8F0;
+      --round-label:    #1E293B;
+      --round-note:     #64748B;
+
+      /* Inline note (pink tint) */
+      --note-bg:        #FFF5F5;
+      --note-border:    #FCA5A5;
+
+      /* Typography */
+      --text-body:      #374151;
+      --text-muted:     #6B7280;
+      --heading-h1:     #1F2937;
+      --heading-phase:  #3B0764;
+      --border-divider: #E5E7EB;
+    }
+
+    /* ─────────────────────────────────────────────
+       BASE
+    ───────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 32px 16px;
+      background: #F3F4F6;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+
+    /* ─────────────────────────────────────────────
+       PATTERN ARTICLE WRAPPER
+    ───────────────────────────────────────────── */
+    .pattern-article {
+      max-width: 780px;
+      margin: 0 auto;
+      background: #FFFFFF;
+      border-radius: 16px;
+      padding: 48px 56px;
+      line-height: 1.75;
+      color: var(--text-body);
+      font-size: 1rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,.07), 0 8px 24px rgba(0,0,0,.05);
+    }
+
+    .pattern-article h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--heading-h1);
+      margin: 0 0 12px;
+      line-height: 1.2;
+    }
+
+    .pattern-article .article-intro {
+      color: var(--text-muted);
+      margin: 0 0 32px;
+      font-size: 1.0625rem;
+    }
+
+    .pattern-article p {
+      margin: 0 0 20px;
+    }
+
+    /* ─────────────────────────────────────────────
+       1. RESOURCE LINK BANNER
+       (Screenshot 1 — pill card with magenta icon)
+    ───────────────────────────────────────────── */
+    .resource-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--brand-pink-bg);
+      border: 1px solid var(--brand-pink-border);
+      border-radius: 100px;            /* full pill */
+      padding: 12px 20px 12px 14px;
+      margin-bottom: 28px;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .resource-link:hover {
+      background: #F9D8E8;
+      border-color: #D4679A;
+    }
+
+    .resource-link-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      background: var(--brand-pink);
+      border-radius: 50%;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    .resource-link-text {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--brand-pink);
+    }
+
+    /* ─────────────────────────────────────────────
+       2. INFO CARD (+ GRID)
+       (Screenshot 2 — two-column blue info cards)
+    ───────────────────────────────────────────── */
+    .info-card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .info-card {
+      background: var(--info-bg);
+      border: 1px solid var(--info-border);
+      border-radius: 14px;
+      padding: 20px 22px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .info-card-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
+      background: var(--info-icon-bg);
+      border-radius: 50%;
+      color: var(--info-icon-color);
+      font-size: 0.8rem;
+      margin-top: 1px;
+    }
+
+    .info-card-body {
+      flex: 1;
+    }
+
+    .info-card-title {
+      font-weight: 700;
+      font-size: 0.9375rem;
+      color: var(--info-title);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .info-card-body ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .info-card-body ul li {
+      font-size: 0.9rem;
+      color: var(--info-text);
+      padding: 2px 0;
+      line-height: 1.5;
+    }
+
+    /* ─────────────────────────────────────────────
+       3. TIP CARD
+       (Screenshot 2 — warm yellow card with 💡)
+    ───────────────────────────────────────────── */
+    .tip-card {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: var(--tip-bg);
+      border: 1px solid var(--tip-border);
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin-bottom: 28px;
+    }
+
+    .tip-card-icon {
+      font-size: 1.1rem;
+      color: var(--tip-icon-color);
+      flex-shrink: 0;
+      margin-top: 1px;
+      line-height: 1.4;
+    }
+
+    .tip-card-body {
+      flex: 1;
+      font-size: 0.9375rem;
+      color: var(--tip-text);
+      line-height: 1.65;
+    }
+
+    .tip-card-body strong {
+      display: block;
+      color: var(--tip-title);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    /* ─────────────────────────────────────────────
+       4. PHASE SECTION
+       (Screenshot 3 — bold purple heading divider)
+    ───────────────────────────────────────────── */
+    .phase-section {
+      margin: 40px 0 6px;
+    }
+
+    .phase-section h2 {
+      font-size: 1.375rem;
+      font-weight: 700;
+      color: var(--heading-phase);
+      margin: 0 0 12px;
+      line-height: 1.25;
+    }
+
+    /* ─────────────────────────────────────────────
+       5. ROUND BLOCKS
+       (Screenshot 3 — indented instructions with
+        left bar, bold label, italic note)
+    ───────────────────────────────────────────── */
+
+    /* 5. Round Blocks */
+    .rounds-wrapper {
+      border: 1px solid #EBEBF0;
+      border-radius: 12px;
+      margin: 20px 0 28px;
+      background: #FFFFFF;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+
+    .round-block {
+      padding: 18px 24px;
+      border-bottom: 1px solid #EBEBF0;
+      font-size: 0.9375rem;
+      color: #3B3653;
+      line-height: 1.65;
+    }
+
+    .round-block:last-child { border-bottom: none; }
+
+    .round-label {
+      display: block;
+      font-weight: 700;
+      color: #2D2145;
+      margin-bottom: 2px;
+      font-size: 0.9375rem;
+    }
+
+    .round-instruction {
+      display: block;
+      color: #3B3653;
+    }
+
+    .round-count {
+      display: block;
+      font-weight: 700;
+      color: #5C1F7A;
+      margin-top: 2px;
+      font-size: 0.9375rem;
+    }
+
+    .round-note {
+      display: block;
+      font-style: italic;
+      color: #6B7280;
+      font-size: 0.9em;
+      margin-top: 6px;
+    }
+
+    /* ─────────────────────────────────────────────
+       6. INLINE NOTE CARD
+       (Screenshot 3 — pink-tinted full-border card
+        inside the rounds section)
+    ───────────────────────────────────────────── */
+    .note-card {
+      background: var(--note-bg);
+      border: 1px solid var(--note-border);
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin: 4px 0;
+      font-size: 0.9rem;
+      color: #7F1D1D;
+      line-height: 1.6;
+    }
+
+    .note-card strong {
+      font-weight: 600;
+      color: #991B1B;
+    }
+
+    /* ─────────────────────────────────────────────
+       7. ALERT CARD
+       (Screenshot 3 — red icon circle, bold red title)
+    ───────────────────────────────────────────── */
+    .alert-card {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: var(--alert-bg);
+      border: 1px solid var(--alert-border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+    }
+
+    .alert-card-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
+      background: var(--alert-icon-bg);
+      border-radius: 50%;
+      color: var(--alert-icon-color);
+      font-size: 0.8rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .alert-card-body {
+      flex: 1;
+      font-size: 0.9375rem;
+      line-height: 1.65;
+    }
+
+    .alert-card-body strong {
+      display: block;
+      font-weight: 700;
+      color: var(--alert-title);
+      margin-bottom: 4px;
+    }
+
+    .alert-card-body p {
+      margin: 0;
+      color: var(--alert-text);
+    }
+
+    /* ─────────────────────────────────────────────
+       SECTION LABEL (e.g. "What You'll Need")
+    ───────────────────────────────────────────── */
+    .section-heading {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--brand-purple);
+      margin: 0 0 20px;
+    }
+
+    /* ─────────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .pattern-article {
+        padding: 28px 20px;
+      }
+      .info-card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ─────────────────────────────────────────────
+       COMPONENT LABEL (demo only)
+    ───────────────────────────────────────────── */
+    .demo-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #9CA3AF;
+      margin: 36px 0 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .demo-label::before, .demo-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #E5E7EB;
+    }
+  </style>
+</head>
+<body>
+
+<article class="pattern-article">
+
+  <h1>Amigurumi Bear — Crochet Pattern</h1>
+  <p class="article-intro">A beginner-friendly pattern for a 15 cm stuffed bear using YarnArt Jeans and a 2.0 mm hook. Read through the full pattern before starting.</p>
+
+  <!-- ── COMPONENT 1: Resource Link Banner ───────────────── -->
+  <div class="demo-label">Component 1 — Resource Link Banner</div>
+
+  <h2 class="section-heading">What You'll Need</h2>
+
+  <a href="#" class="resource-link" role="note" aria-label="Link to crochet abbreviations guide">
+    <span class="resource-link-icon" aria-hidden="true">📖</span>
+    <span class="resource-link-text">New to crochet terms? Check our Complete Abbreviations Guide</span>
+  </a>
+
+  <!-- ── COMPONENT 2: Info Card Grid ────────────────────── -->
+  <div class="demo-label">Component 2 — Info Card Grid</div>
+
+  <div class="info-card-grid">
+
+    <div class="info-card" role="note" aria-label="Yarn requirements">
+      <div class="info-card-icon" aria-hidden="true">ℹ</div>
+      <div class="info-card-body">
+        <span class="info-card-title">Yarn</span>
+        <ul>
+          <li>YarnArt Jeans — White (shade 62)</li>
+          <li>YarnArt Jeans — Flesh (shade 03)</li>
+          <li>YarnArt Jeans — Blue (shade 68)</li>
+          <li>YarnArt Jeans — Brown (shade 40)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="info-card" role="note" aria-label="Hook and tools required">
+      <div class="info-card-icon" aria-hidden="true">ℹ</div>
+      <div class="info-card-body">
+        <span class="info-card-title">Hook &amp; Tools</span>
+        <ul>
+          <li>B-1 / 2.0 mm crochet hook</li>
+          <li>8 mm safety eyes × 2</li>
+          <li>Polyfill / fiberfill stuffing</li>
+          <li>Stitch markers</li>
+          <li>Yarn needle (blunt tip)</li>
+          <li>Black embroidery thread</li>
+          <li>Scissors</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── COMPONENT 3: Tip Card ──────────────────────────── -->
+  <div class="demo-label">Component 3 — Tip / Gauge Card</div>
+
+  <div class="tip-card" role="note" aria-label="Gauge and tension tip">
+    <div class="tip-card-icon" aria-hidden="true">💡</div>
+    <div class="tip-card-body">
+      <strong>Gauge &amp; Tension</strong>
+      Gauge isn't critical for size accuracy, but a tight, consistent tension is non-negotiable. If you can see daylight between your stitches, drop to a 1.75 mm hook. Stuffing peeking through flesh-tone yarn is the fastest way to <em>make an amigurumi look unfinished</em>.
+    </div>
+  </div>
+
+  <!-- ── COMPONENT 4: Phase Section heading ────────────── -->
+  <div class="demo-label">Component 4 — Phase Section + Round Blocks</div>
+
+  <div class="phase-section">
+    <h2>Instructions</h2>
+  </div>
+
+  <div class="phase-section">
+    <h2>Phase 1: The Arms</h2>
+  </div>
+
+  <p>
+    The arms are the smallest piece in the project — finished, each one is about an inch and a half long with a flesh-tone hand at the bottom, a blue sleeve, and a tiny white scalloped ruffle marking the transition between the two.
+    They look like miniature ice cream cones with a frilled collar. The key move is Round 5: working in back loops only frees up the front loops for that scalloped sleeve cuff later. Make both, leave both with live yarn attached, and set them aside — you'll fuse them directly into the body in Phase 2.
+  </p>
+  <p><strong>Make 2. Begin with Flesh yarn.</strong></p>
+
+  <!-- ── COMPONENT 5: Round Blocks ─────────────────────── -->
+  <div class="rounds-wrapper" role="list" aria-label="Round-by-round instructions">
+
+    <div class="round-block" role="listitem">
+      <span class="round-label">Round 1:</span>
+      6 SC in a MR <span class="round-count">(6)</span>
+    </div>
+
+    <div class="round-block" role="listitem">
+      <span class="round-label">Rounds 2–4:</span>
+      SC in each st around <span class="round-count">(6)</span>
+      <span class="round-note">Switch to Blue yarn.</span>
+    </div>
+
+    <div class="round-block" role="listitem">
+      <span class="round-label">Round 5:</span>
+      SC in BLO of each st around <span class="round-count">(6)</span>
+      <span class="round-note">(You're skipping the front loops on purpose — they stay free for the ruffle in step 5. The arm will feel slightly stiffer at this round because of the loop change. That's correct.)</span>
+    </div>
+
+    <div class="round-block" role="listitem">
+      <span class="round-label">Rounds 6–9:</span>
+      SC in each st around <span class="round-count">(6)</span>
+      <span class="round-note">Do not fasten off the main arm yarn. Secure the live loop with a stitch marker.</span>
+    </div>
+
+    <!-- ── COMPONENT 6: Inline Note Card ─── -->
+    <div class="note-card" role="note" aria-label="Sleeve ruffle instruction">
+      <strong>Sleeve Ruffle (worked into the free front loops of Round 5):</strong> Join a separate strand of Blue yarn into any front loop of Rnd 5. [Ch 3, skip 1 st, sl st into next st] × 3 around.
+      <br />FO the ruffle strand only and weave in those ends.
+    </div>
+
+    <!-- ── COMPONENT 7: Alert Card (nested) ─ -->
+    <div class="alert-card" role="alert" aria-label="Critical warning: do not cut main yarn">
+      <div class="alert-card-icon" aria-hidden="true">!</div>
+      <div class="alert-card-body">
+        <strong>Don't Cut the Main Arm Yarn</strong>
+        <p>Only the ruffle strand fastens off. The main arm yarn stays live with the stitch marker holding it. Both arms need to be ready to attach when you hit Round 15 of the body — if you cut the yarn, you can't do the inline join.</p>
+      </div>
+    </div>
+
+  </div>
+
+</article>
+
+</body>
+</html>
