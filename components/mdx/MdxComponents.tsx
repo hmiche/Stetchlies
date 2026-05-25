@@ -323,6 +323,7 @@ import {
 } from '@/components/ui/accordion'
 
 export function FAQAccordion({ items }: { items: { question: string; answer: string }[] }) {
+  console.log("FAQAccordion received items:", items)
   return (
     <div style={{ margin: '40px 0', fontFamily: '"Inter", system-ui, sans-serif' }}>
       <h2
@@ -352,6 +353,47 @@ export function FAQAccordion({ items }: { items: { question: string; answer: str
         ))}
       </Accordion>
     </div>
+  )
+}
+
+/* ─────────────────────────────────────────────────────────────
+   DECLARATIVE FAQ COMPONENT (Better for MDX)
+───────────────────────────────────────────────────────────── */
+export function FAQ({ children }: { children: React.ReactNode }) {
+  return (
+    <div style={{ margin: '40px 0', fontFamily: '"Inter", system-ui, sans-serif' }}>
+      <h2
+        style={{
+          fontSize: '1.5rem',
+          fontWeight: 700,
+          color: '#3B0764',
+          marginBottom: '20px',
+        }}
+      >
+        Questions You Might Have
+      </h2>
+      <Accordion type="single" collapsible className="w-full flex flex-col gap-3">
+        {children}
+      </Accordion>
+    </div>
+  )
+}
+
+export function FAQItem({ question, children }: { question: string; children: React.ReactNode }) {
+  // Use a random value so multiple FAQItems don't collide if we don't have an index
+  const value = React.useId()
+  return (
+    <AccordionItem
+      value={value}
+      className="border border-[#e2e8f0] rounded-xl px-5 py-1 bg-white hover:border-[#cbd5e1] transition-colors shadow-sm"
+    >
+      <AccordionTrigger className="text-[#334155] font-medium text-[15px] hover:no-underline py-4 text-left">
+        {question}
+      </AccordionTrigger>
+      <AccordionContent className="text-[#475569] leading-relaxed pb-4">
+        {children}
+      </AccordionContent>
+    </AccordionItem>
   )
 }
 
@@ -393,4 +435,6 @@ export const mdxComponents = {
   RoundsWrapper,
   NoteCard,
   FAQAccordion,
+  FAQ,
+  FAQItem,
 }
