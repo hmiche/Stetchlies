@@ -27,7 +27,7 @@ export default function ContactPage() {
         ]}
       />
 
-      <div className="container mx-auto py-10">
+      <div className="w-full max-w-[1280px] mx-auto px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 py-10">
         <Breadcrumb items={[{ name: 'Contact', href: '/contact' }]} />
 
         <div className="max-w-4xl mx-auto">

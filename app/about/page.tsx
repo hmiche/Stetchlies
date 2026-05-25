@@ -26,7 +26,7 @@ export default function AboutPage() {
         ]}
       />
 
-      <div className="container mx-auto py-10">
+      <div className="w-full max-w-[1280px] mx-auto px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 py-10">
         <Breadcrumb items={[{ name: 'About', href: '/about' }]} />
 
         {/* Hero Section */}

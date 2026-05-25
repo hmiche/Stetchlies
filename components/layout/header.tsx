@@ -40,7 +40,7 @@ export function Header() {
       
       {/* Top Social/CTA Bar */}
       <div className="w-full bg-[#65bcae]">
-        <div className="container mx-auto h-10 flex items-center justify-between">
+        <div className="w-full max-w-[1280px] mx-auto px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 h-10 flex items-center justify-between">
           {/* Social Icons */}
           <div className="flex h-full items-center pl-4 sm:pl-0">
             <a href="#" className="flex items-center justify-center w-10 h-full bg-[#f49e65] text-white hover:bg-[#e08f5a] transition-colors">
@@ -62,7 +62,7 @@ export function Header() {
       </div>
 
       <header className="sticky top-0 z-50 w-full border-b border-stone-200/50 bg-background/95 backdrop-blur-md">
-        <div className="container mx-auto">
+        <div className="w-full max-w-[1280px] mx-auto px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20">
           {/* Main nav row */}
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
