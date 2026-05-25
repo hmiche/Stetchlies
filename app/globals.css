@@ -5,13 +5,13 @@
 
 /* Crochet Blog - Vibrant Pink & Teal Palette */
 :root {
-  /* Core palette - Clean & Bright */
+/* Core palette - Clean & Bright */
   --background: oklch(0.985 0.002 260);      /* Very light cool white */
-  --foreground: #1a1a1a;                     /* Deep blue-gray to near-black */
+  --foreground: #4b5563;                     /* Slate 600 text color */
   
   /* Surface colors */
   --card: oklch(0.995 0.001 260);            /* Pure white cards */
-  --card-foreground: #1a1a1a;
+  --card-foreground: #4b5563;
   --popover: oklch(0.995 0.001 260);
   --popover-foreground: oklch(0.18 0.02 260);
   

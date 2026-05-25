@@ -40,27 +40,44 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
   if (headings.length === 0) return null
 
   return (
-    <nav className="space-y-1" aria-label="Table of contents">
-      <p className="font-serif font-semibold text-foreground mb-3">On this page</p>
-      <ul className="space-y-2">
-        {headings.map((heading) => (
-          <li
-            key={heading.id}
-            style={{ paddingLeft: `${(heading.level - 2) * 12}px` }}
-          >
-            <Link
-              href={`#${heading.id}`}
+    <nav aria-label="Table of contents">
+      <p className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">In this pattern</p>
+      <ul className="flex flex-col">
+        {headings.map((heading) => {
+          const isActive = activeId === heading.id
+          const isLevel3 = heading.level >= 3
+
+          return (
+            <li
+              key={heading.id}
               className={cn(
-                'text-[0.875rem] block py-1 transition-colors border-l-2 pl-3 -ml-px',
-                activeId === heading.id
-                  ? 'text-primary border-primary font-bold'
-                  : 'text-muted-foreground border-transparent hover:text-foreground hover:border-border font-normal'
+                isLevel3 ? 'ml-3 border-l-2 border-stone-100' : 'mt-1 first:mt-0'
               )}
             >
-              {heading.text}
-            </Link>
-          </li>
-        ))}
+              <a
+                href={`#${heading.id}`}
+                onClick={(e) => {
+                  e.preventDefault()
+                  setActiveId(heading.id)
+                  const element = document.getElementById(heading.id)
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                    window.history.pushState(null, '', `#${heading.id}`)
+                  }
+                }}
+                className={cn(
+                  'block px-4 py-2 text-[14px] transition-colors rounded-full my-0.5',
+                  !isLevel3 && isActive ? 'bg-pink-50 text-[#e83e8c] font-semibold' : '',
+                  !isLevel3 && !isActive ? 'text-slate-500 hover:text-slate-800' : '',
+                  isLevel3 && isActive ? 'bg-stone-50 text-[#32174d] font-semibold ml-2' : '',
+                  isLevel3 && !isActive ? 'text-slate-400 hover:text-slate-600 ml-2' : ''
+                )}
+              >
+                {heading.text}
+              </a>
+            </li>
+          )
+        })}
       </ul>
     </nav>
   )

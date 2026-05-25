@@ -2,16 +2,16 @@ import type { Metadata } from 'next'
 import { Breadcrumb, BreadcrumbJsonLd } from '@/components/layout/breadcrumb'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service',
-  description: 'Terms of Service for Cozy Stitches. Read our terms and conditions for using our website and content.',
+  title: 'Terms & Conditions | Stetchlies',
+  description: 'Terms and Conditions for Stetchlies. Read our terms for using our website, patterns, and content.',
   alternates: {
     canonical: '/terms-of-service',
   },
 }
 
 export default function TermsOfServicePage() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com'
-  const lastUpdated = 'January 1, 2025'
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://stetchlies.com'
+  const lastUpdated = 'May 25, 2025'
 
   return (
     <div className="min-h-screen">
@@ -36,7 +36,7 @@ export default function TermsOfServicePage() {
           <div className="prose prose-lg max-w-none">
             <h2>Agreement to Terms</h2>
             <p>
-              By accessing or using the Cozy Stitches website (&quot;Service&quot;), you agree to be bound by these Terms of Service (&quot;Terms&quot;). If you disagree with any part of these terms, you may not access the Service.
+              By accessing or using the <strong>Stetchlies</strong> website (&quot;Service&quot;), you agree to be bound by these Terms &amp; Conditions (&quot;Terms&quot;). If you disagree with any part of these terms, you may not access the Service.
             </p>
 
             <h2>Intellectual Property</h2>
@@ -88,7 +88,7 @@ export default function TermsOfServicePage() {
 
             <h2>Limitation of Liability</h2>
             <p>
-              To the maximum extent permitted by applicable law, in no event shall Cozy Stitches, its affiliates, directors, employees, or agents be liable for any indirect, punitive, incidental, special, consequential, or exemplary damages arising out of or in connection with your use of the Service.
+              To the maximum extent permitted by applicable law, in no event shall <strong>Stetchlies</strong>, its affiliates, directors, employees, or agents be liable for any indirect, punitive, incidental, special, consequential, or exemplary damages arising out of or in connection with your use of the Service.
             </p>
 
             <h2>External Links</h2>
@@ -111,7 +111,7 @@ export default function TermsOfServicePage() {
               If you have any questions about these Terms, please contact us at:
             </p>
             <ul>
-              <li>Email: hello@cozystitches.com</li>
+              <li>Email: <a href="mailto:hello@stetchlies.com">hello@stetchlies.com</a></li>
               <li>Contact form: <a href="/contact">/contact</a></li>
             </ul>
           </div>

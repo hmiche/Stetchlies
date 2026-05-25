@@ -1,6 +1,7 @@
 import { CldImage } from '@/components/ui/cld-image'
 import Image from 'next/image'
 import React from 'react'
+import { cn } from '@/lib/utils'
 
 /* ─────────────────────────────────────────────────────────────
    PATTERN CARD COMPONENTS
@@ -190,19 +191,13 @@ export function AlertCard({ title, children }: { title: string; children: React.
 
 // ── 6. Phase Section heading ─────────────────────────────────
 export function PhaseSection({ children }: { children: React.ReactNode }) {
+  const textContent = React.Children.toArray(children).join('')
+  const id = textContent.toLowerCase().replace(/[^\w\s-]/g, '').replace(/[\s_]+/g, '-')
   return (
-    <div style={{ marginTop: '40px', marginBottom: '6px' }}>
-      <h2
-        style={{
-          fontSize: '1.375rem',
-          fontWeight: 700,
-          color: '#3B0764',
-          margin: '0 0 12px',
-          lineHeight: 1.25,
-        }}
-      >
+    <div className="mt-10 mb-4">
+      <h3 id={id} className="font-serif text-[1.6rem] font-bold text-[#3B0764] m-0 leading-snug tracking-tight scroll-mt-24">
         {children}
-      </h2>
+      </h3>
     </div>
   )
 }
@@ -222,38 +217,21 @@ export function RoundBlock({
   return (
     <div
       role="listitem"
-      className="group transition-colors duration-200 hover:bg-stone-100 rounded-md"
-      style={{
-        padding: '10px 16px',
-        margin: '2px 0',
-        fontSize: '0.95rem',
-        color: '#4b5563',
-        lineHeight: 1.6,
-      }}
+      className="group transition-colors duration-200 hover:bg-blue-50/50 rounded-md py-2 px-4 my-1 text-[0.875rem] text-slate-600 leading-relaxed [&_p]:inline [&_p]:m-0"
     >
-      <div>
-        <strong style={{ color: '#374151', fontWeight: 700, marginRight: '8px' }}>
-          {label}
+      <strong className="text-slate-800 font-bold mr-2">
+        {label}
+      </strong>
+      <span className="mr-2">{children}</span>
+      {count && (
+        <strong className="text-slate-800 font-bold mr-2">
+          {count}
         </strong>
-        <span>{children}</span>
-        {count && (
-          <strong style={{ color: '#374151', fontWeight: 700, marginLeft: '8px' }}>
-            {count}
-          </strong>
-        )}
-      </div>
-      {/* Optional italic note */}
+      )}
       {note && (
-        <div
-          style={{
-            fontStyle: 'italic',
-            color: '#6b7280',
-            fontSize: '0.9em',
-            marginTop: '4px',
-          }}
-        >
+        <span className="italic text-slate-500 text-[0.85em]">
           {note}
-        </div>
+        </span>
       )}
     </div>
   )
@@ -381,6 +359,26 @@ export function FAQAccordion({ items }: { items: { question: string; answer: str
    EXPORT — all components available in every MDX article
 ───────────────────────────────────────────────────────────── */
 export const mdxComponents = {
+  // Headings
+  h2: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h2
+      className={cn("font-serif text-3xl sm:text-4xl font-black text-[#e83e8c] mt-12 mb-6 tracking-tight scroll-mt-24", className)}
+      {...props}
+    />
+  ),
+  h3: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h3
+      className={cn("font-serif text-2xl sm:text-[1.7rem] font-bold text-[#32174d] mt-10 mb-4 tracking-tight scroll-mt-24", className)}
+      {...props}
+    />
+  ),
+  h4: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h4
+      className={cn("font-sans text-xl font-bold text-[#1a2332] mt-8 mb-3 scroll-mt-24", className)}
+      {...props}
+    />
+  ),
+
   // Image override
   img: MdxImage,
 

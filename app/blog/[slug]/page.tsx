@@ -9,6 +9,8 @@ import { ReadingProgress } from '@/components/blog/reading-progress'
 import { ShareButtons } from '@/components/blog/share-buttons'
 import { RelatedPosts } from '@/components/blog/related-posts'
 import { TableOfContents } from '@/components/blog/table-of-contents'
+import { AuthorBio } from '@/components/blog/author-bio'
+import { PinterestBanner } from '@/components/blog/pinterest-banner'
 import { getPostBySlug, getRelatedPosts, getAllPostSlugs } from '@/lib/posts'
 import { formatDate } from '@/lib/utils'
 import { MDXRemote } from 'next-mdx-remote/rsc'
@@ -83,14 +85,27 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   const relatedPosts = await getRelatedPosts(slug, 3)
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com'
 
-  // Sample headings for the article (in real app, extracted from MDX)
-  const headings = [
-    { id: 'introduction', text: 'Introduction', level: 2 },
-    { id: 'materials-needed', text: 'Materials Needed', level: 2 },
-    { id: 'step-by-step', text: 'Step-by-Step Instructions', level: 2 },
-    { id: 'tips-and-tricks', text: 'Tips and Tricks', level: 2 },
-    { id: 'conclusion', text: 'Conclusion', level: 2 },
-  ]
+  // Extract headings dynamically from MDX body
+  const extractedHeadings: { id: string; text: string; level: number; index: number }[] = []
+  
+  const headingRegex = /^(#{2,3})\s+(.+)$/gm
+  let match
+  while ((match = headingRegex.exec(post.body)) !== null) {
+    const level = match[1].length
+    const text = match[2].trim()
+    const id = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/[\s_]+/g, '-')
+    extractedHeadings.push({ id, text, level, index: match.index })
+  }
+
+  const phaseRegex = /<PhaseSection>([\s\S]*?)<\/PhaseSection>/g
+  while ((match = phaseRegex.exec(post.body)) !== null) {
+    const text = match[1].trim()
+    const id = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/[\s_]+/g, '-')
+    extractedHeadings.push({ id, text, level: 3, index: match.index })
+  }
+
+  extractedHeadings.sort((a, b) => a.index - b.index)
+  const headings = extractedHeadings.map(({ id, text, level }) => ({ id, text, level }))
 
   // JSON-LD structured data
   const articleJsonLd = {
@@ -235,6 +250,13 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               />
             </div>
 
+            {/* Pinterest Banner */}
+            <PinterestBanner
+              title={post.title}
+              url={`${siteUrl}/blog/${post.slug}`}
+              media={post.coverImage ? `${siteUrl}${post.coverImage}` : undefined}
+            />
+
             {/* Tags */}
             <div className="pt-8 border-t border-border">
               <div className="flex flex-wrap items-center gap-2">
@@ -261,29 +283,6 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               />
             </div>
 
-            {/* Author bio */}
-            <div className="p-6 bg-card rounded-xl border border-border">
-              <div className="flex items-start gap-4">
-                {post.authorImage && (
-                  <div className="relative h-16 w-16 rounded-full overflow-hidden flex-shrink-0">
-                    <Image
-                      src={post.authorImage}
-                      alt={post.author}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                )}
-                <div>
-                  <p className="text-sm text-muted-foreground">Written by</p>
-                  <h3 className="font-serif text-lg font-bold text-foreground">{post.author}</h3>
-                  {post.authorBio && (
-                    <p className="mt-2 text-sm text-muted-foreground">{post.authorBio}</p>
-                  )}
-                </div>
-              </div>
-            </div>
-
             {/* Related Posts */}
             <RelatedPosts posts={relatedPosts} />
           </div>
@@ -291,6 +290,13 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           {/* Sidebar */}
           <aside className="hidden lg:block">
             <div className="sticky top-24 space-y-8">
+              {/* Author bio */}
+              <AuthorBio
+                author={post.author}
+                authorImage={post.authorImage}
+                authorBio={post.authorBio}
+              />
+
               {/* Table of Contents */}
               <div className="bg-card rounded-xl p-6 border border-border">
                 <TableOfContents headings={headings} />

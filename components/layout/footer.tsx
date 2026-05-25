@@ -1,6 +1,14 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+const quickLinks = [
+  { name: 'Privacy Policy', href: '/privacy-policy' },
+  { name: 'Terms & Condition', href: '/terms-of-service' },
+  { name: 'GDPR & CCPA', href: '/gdpr-ccpa' },
+  { name: 'Disclaimer', href: '/disclaimer' },
+  { name: 'Contact us', href: '/contact' },
+]
+
 const footerLinks = {
   patterns: [
     { name: 'Free Patterns', href: '/category/free-patterns' },
@@ -9,15 +17,10 @@ const footerLinks = {
     { name: 'Home Decor', href: '/category/home-decor' },
   ],
   explore: [
-    { name: 'About Emma', href: '/about' },
+    { name: 'About', href: '/about' },
     { name: 'Yarn Reviews', href: '/category/yarn-reviews' },
     { name: 'Contact Me', href: '/contact' },
     { name: 'Search Patterns', href: '/search' },
-  ],
-  legal: [
-    { name: 'Privacy Policy', href: '/privacy-policy' },
-    { name: 'Terms of Service', href: '/terms-of-service' },
-    { name: 'Disclaimer', href: '/disclaimer' },
   ],
 }
 
@@ -26,19 +29,28 @@ export function Footer() {
     <footer className="border-t border-stone-200/60 bg-stone-50/50 py-16 mt-auto">
       <div className="px-6 md:px-12 lg:px-20">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
+
           {/* Brand column */}
           <div className="md:col-span-4 space-y-4">
-            <Link href="/" className="inline-block">
+            <Link href="/" className="inline-flex items-center gap-3 group py-1">
               <Image
-                src="/logo.png"
-                alt="Stitchlies — Crochet Patterns & Inspiration"
-                width={180}
-                height={46}
-                className="h-10 w-auto object-contain"
+                src="/nav-icon.png"
+                alt="Stetchlies Icon"
+                width={60}
+                height={60}
+                className="h-10 w-auto object-contain group-hover:-rotate-[8deg] transition-transform duration-500 drop-shadow-md"
               />
+              <div className="flex">
+                <span className="font-sans text-2xl font-black tracking-tight text-[#32174d] group-hover:opacity-90 transition-opacity">
+                  STETCH
+                </span>
+                <span className="font-sans text-2xl font-black tracking-tight text-[#e83e8c] group-hover:opacity-90 transition-opacity">
+                  LIES
+                </span>
+              </div>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
-              A dedicated space for the modern maker. We provide high-end, free amigurumi and crochet patterns with an editorial soul. Handcrafted with care for your creative journey.
+              A dedicated space for the modern maker. We provide high-quality, free amigurumi and crochet patterns with an editorial soul. Handcrafted with care for your creative journey.
             </p>
             <p className="text-xs text-muted-foreground font-semibold italic">
               — Emma Wilson, Creative Director
@@ -47,7 +59,7 @@ export function Footer() {
 
           {/* Patterns */}
           <div className="md:col-span-2">
-            <h3 className="font-serif font-bold text-heading mb-4 text-base">Free Patterns</h3>
+            <h3 className="font-serif font-bold text-foreground mb-4 text-base">Free Patterns</h3>
             <ul className="space-y-3">
               {footerLinks.patterns.map((link) => (
                 <li key={link.href}>
@@ -64,7 +76,7 @@ export function Footer() {
 
           {/* Explore */}
           <div className="md:col-span-2">
-            <h3 className="font-serif font-bold text-heading mb-4 text-base">Explore</h3>
+            <h3 className="font-serif font-bold text-foreground mb-4 text-base">Explore</h3>
             <ul className="space-y-3">
               {footerLinks.explore.map((link) => (
                 <li key={link.href}>
@@ -79,22 +91,40 @@ export function Footer() {
             </ul>
           </div>
 
+          {/* Quick Links */}
+          <div className="md:col-span-2">
+            <h3 className="font-serif font-bold text-[#e83e8c] mb-4 text-base">Quick Links</h3>
+            <ul className="space-y-3">
+              {quickLinks.map((link) => (
+                <li key={link.href} className="flex items-center gap-2">
+                  <span className="text-[#e83e8c] font-bold text-xs">›</span>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors font-semibold"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Newsletter Box */}
-          <div className="md:col-span-4 space-y-4">
-            <h3 className="font-serif font-bold text-heading text-base">Join the Archive</h3>
+          <div className="md:col-span-2 space-y-4">
+            <h3 className="font-serif font-bold text-foreground text-base">Join the Archive</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Receive monthly pattern releases and craft inspiration directly to your inbox. Double opt-in, bail anytime.
+              Monthly patterns and craft inspiration to your inbox. Bail anytime.
             </p>
-            <div className="flex flex-col sm:flex-row gap-2 max-w-sm">
+            <div className="flex flex-col gap-2">
               <input
                 type="email"
                 placeholder="Email address"
-                className="flex-1 px-4 py-2.5 text-xs bg-white border border-stone-200 rounded-full focus:outline-none focus:ring-2 focus:ring-primary/20 text-foreground"
+                className="px-4 py-2.5 text-xs bg-white border border-stone-200 rounded-full focus:outline-none focus:ring-2 focus:ring-primary/20 text-foreground"
                 required
               />
               <button
                 type="button"
-                className="px-5 py-2.5 text-xs font-bold text-white bg-ami-carrot hover:bg-ami-carrot-hover transition-colors rounded-full uppercase tracking-wider cursor-pointer border-0"
+                className="px-5 py-2.5 text-xs font-bold text-white bg-[#e83e8c] hover:bg-[#d8327d] transition-colors rounded-full uppercase tracking-wider cursor-pointer border-0"
               >
                 Join
               </button>
@@ -105,19 +135,18 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-16 pt-8 border-t border-stone-200/50 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex flex-wrap gap-4 text-xs text-muted-foreground">
-            <span>&copy; {new Date().getFullYear()} Cozy Stitches. All rights reserved.</span>
-            {footerLinks.legal.map((link) => (
-              <Link key={link.href} href={link.href} className="hover:text-primary transition-colors">
-                {link.name}
-              </Link>
-            ))}
+            <span>&copy; {new Date().getFullYear()} Stetchlies. All rights reserved.</span>
+            <Link href="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link>
+            <Link href="/terms-of-service" className="hover:text-primary transition-colors">Terms</Link>
+            <Link href="/disclaimer" className="hover:text-primary transition-colors">Disclaimer</Link>
+            <Link href="/gdpr-ccpa" className="hover:text-primary transition-colors">GDPR & CCPA</Link>
           </div>
           <div className="flex items-center gap-4">
             <Link
-              href="https://pinterest.com"
+              href="https://pinterest.com/Stetchlies/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="text-muted-foreground hover:text-[#E60023] transition-colors"
               aria-label="Pinterest"
             >
               <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -128,7 +157,7 @@ export function Footer() {
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="text-muted-foreground hover:text-[#E1306C] transition-colors"
               aria-label="Instagram"
             >
               <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">

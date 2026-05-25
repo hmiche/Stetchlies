@@ -2,16 +2,16 @@ import type { Metadata } from 'next'
 import { Breadcrumb, BreadcrumbJsonLd } from '@/components/layout/breadcrumb'
 
 export const metadata: Metadata = {
-  title: 'Disclaimer',
-  description: 'Disclaimer for Cozy Stitches. Read about affiliate links, sponsored content, and product recommendations.',
+  title: 'Disclaimer | Stetchlies',
+  description: 'Disclaimer for Stetchlies. Read about affiliate links, sponsored content, advertising, and product recommendations.',
   alternates: {
     canonical: '/disclaimer',
   },
 }
 
 export default function DisclaimerPage() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com'
-  const lastUpdated = 'January 1, 2025'
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://stetchlies.com'
+  const lastUpdated = 'May 25, 2025'
 
   return (
     <div className="min-h-screen">
@@ -36,7 +36,15 @@ export default function DisclaimerPage() {
           <div className="prose prose-lg max-w-none">
             <h2>General Disclaimer</h2>
             <p>
-              The information provided on Cozy Stitches is for general informational and educational purposes only. While we strive to keep the information up to date and accurate, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the information, products, services, or related graphics contained on the website.
+              The information provided on <strong>Stetchlies</strong> is for general informational and educational purposes only. While we strive to keep the information up to date and accurate, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of any information contained on the website.
+            </p>
+
+            <h2>Advertising Disclosure</h2>
+            <p>
+              This website participates in the <strong>Google AdSense</strong> advertising program. This means Google may display advertisements on our pages. These ads are served by Google and may be personalized based on your browsing behavior. We receive compensation when ads are displayed or clicked, which helps us fund the free content on this site.
+            </p>
+            <p>
+              We have no control over the specific ads displayed by Google AdSense. The presence of an ad does not constitute our endorsement of the advertised product or service.
             </p>
 
             <h2>Affiliate Disclosure</h2>
@@ -113,7 +121,7 @@ export default function DisclaimerPage() {
               If you have questions about this disclaimer or our affiliate relationships, please contact us at:
             </p>
             <ul>
-              <li>Email: hello@cozystitches.com</li>
+              <li>Email: <a href="mailto:hello@stetchlies.com">hello@stetchlies.com</a></li>
               <li>Contact form: <a href="/contact">/contact</a></li>
             </ul>
           </div>

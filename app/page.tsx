@@ -6,52 +6,16 @@ import { ArticleCard } from '@/components/blog/article-card'
 import { ArticleGrid } from '@/components/blog/article-grid'
 import { getAllPosts, getFeaturedPosts } from '@/lib/posts'
 
-const categories = [
-  { 
-    name: 'Animals', 
-    slug: 'amigurumi', 
-    description: 'Cute animal patterns from beavers to whales.',
-    patternCount: 71,
-    images: [
-      'https://images.unsplash.com/photo-1584984279586-7e44a70bcf47?w=800&q=80',
-      'https://images.unsplash.com/photo-1628045952136-1e0e8548c7d3?w=400&q=80',
-      'https://images.unsplash.com/photo-1628045951804-0c5a3d758c0c?w=400&q=80'
-    ]
-  },
-  { 
-    name: 'Fantasy', 
-    slug: 'advanced', 
-    description: 'Dragons, unicorns, and magical creatures.',
-    patternCount: 8,
-    images: [
-      'https://images.unsplash.com/photo-1590487005858-6932a3928151?w=800&q=80',
-      'https://images.unsplash.com/photo-1590487005953-62c1cfbb0302?w=400&q=80',
-      'https://images.unsplash.com/photo-1583091916960-9f5b61517441?w=400&q=80'
-    ]
-  },
-  { 
-    name: 'Home Decor', 
-    slug: 'home-decor', 
-    description: 'Cozy blankets, pillows, and aesthetic accents.',
-    patternCount: 24,
-    images: [
-      'https://images.unsplash.com/photo-1585897621453-294713aef1be?w=800&q=80',
-      'https://images.unsplash.com/photo-1616853229712-16e6eb123e4e?w=400&q=80',
-      'https://images.unsplash.com/photo-1594968840615-568eb4061a99?w=400&q=80'
-    ]
-  },
-  { 
-    name: 'Beginner', 
-    slug: 'beginner-guides', 
-    description: 'Simple patterns perfect for your first project.',
-    patternCount: 156,
-    images: [
-      'https://images.unsplash.com/photo-1605370966952-441fdfc7de29?w=800&q=80',
-      'https://images.unsplash.com/photo-1614216781283-a75d5e9b3117?w=400&q=80',
-      'https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=400&q=80'
-    ]
-  }
-]
+const categoryDescriptions: Record<string, string> = {
+  'animals': 'Cute animal patterns from beavers to whales.',
+  'amigurumi': 'Cute animal patterns from beavers to whales.',
+  'fantasy': 'Dragons, unicorns, and magical creatures.',
+  'advanced': 'Dragons, unicorns, and magical creatures.',
+  'home decor': 'Cozy blankets, pillows, and aesthetic accents.',
+  'beginner': 'Simple patterns perfect for your first project.',
+  'beginner guides': 'Simple patterns perfect for your first project.',
+  'guides': 'Tips, tricks, and comprehensive guides for crochet lovers.'
+}
 
 export default async function HomePage() {
   const allPosts = await getAllPosts()
@@ -59,6 +23,47 @@ export default async function HomePage() {
   const latestPosts = allPosts.slice(0, 6)
   const popularPosts = allPosts.slice(0, 5)
   const featuredPost = featuredPosts[0] || allPosts[0]
+
+  const categoryMap = new Map<string, {
+    name: string;
+    slug: string;
+    description: string;
+    patternCount: number;
+    images: string[];
+  }>()
+
+  allPosts.forEach(post => {
+    if (!post.category) return;
+    const slug = post.category.toLowerCase().replace(/\s+/g, '-')
+    if (!categoryMap.has(post.category)) {
+      categoryMap.set(post.category, {
+        name: post.category,
+        slug: slug,
+        description: categoryDescriptions[post.category.toLowerCase()] || `Explore our collection of ${post.category} patterns.`,
+        patternCount: 1,
+        images: post.coverImage ? [post.coverImage] : []
+      })
+    } else {
+      const cat = categoryMap.get(post.category)!
+      cat.patternCount += 1
+      if (post.coverImage && !cat.images.includes(post.coverImage) && cat.images.length < 3) {
+        cat.images.push(post.coverImage)
+      }
+    }
+  })
+
+  const fallbackImages = [
+    'https://images.unsplash.com/photo-1584984279586-7e44a70bcf47?w=800&q=80',
+    'https://images.unsplash.com/photo-1628045952136-1e0e8548c7d3?w=400&q=80',
+    'https://images.unsplash.com/photo-1628045951804-0c5a3d758c0c?w=400&q=80'
+  ]
+
+  const dynamicCategories = Array.from(categoryMap.values()).map(cat => {
+    while (cat.images.length < 3) {
+      cat.images.push(fallbackImages[cat.images.length])
+    }
+    return cat
+  }).sort((a, b) => b.patternCount - a.patternCount).slice(0, 4)
 
   return (
     <div className="min-h-screen">
@@ -172,7 +177,7 @@ export default async function HomePage() {
         </div>
         
         <div className="grid md:grid-cols-2 gap-8 max-w-7xl mx-auto">
-          {categories.map((category) => (
+          {dynamicCategories.map((category) => (
             <Link
               key={category.slug}
               href={`/category/${category.slug}`}
