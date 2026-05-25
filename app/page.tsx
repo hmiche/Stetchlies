@@ -1,3 +1,5 @@
+export const revalidate = 60
+
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, Mail, Sparkles, BookOpen } from 'lucide-react'
