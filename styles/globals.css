@@ -213,28 +213,36 @@
   position: relative;
 }
 
-@utility container {
+.container {
   margin-inline: auto;
-  padding-inline: 2.5rem;
+  padding-inline: 1.5rem;
   width: 100%;
+}
 
-  @variant sm {
+@media (min-width: 640px) {
+  .container {
     max-width: 640px;
+    padding-inline: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
     padding-inline: 3rem;
   }
+}
 
-  @variant md {
-    max-width: 768px;
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
     padding-inline: 4rem;
   }
+}
 
-  @variant lg {
-    max-width: 1024px;
-    padding-inline: 5rem;
-  }
-
-  @variant xl {
+@media (min-width: 1280px) {
+  .container {
     max-width: 1200px;
-    padding-inline: 6rem;
+    padding-inline: 5rem;
   }
 }
