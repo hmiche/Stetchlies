@@ -8,7 +8,7 @@ import { Breadcrumb, BreadcrumbJsonLd } from '@/components/layout/breadcrumb'
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'Learn about Cozy Stitches, our mission to share the joy of crochet, and meet the team behind your favorite patterns and tutorials.',
+  description: 'Learn about Stetchlies, my mission to share the joy of crochet, and the story behind your favorite patterns and tutorials.',
   alternates: {
     canonical: '/about',
   },
@@ -26,7 +26,7 @@ export default function AboutPage() {
         ]}
       />
 
-      <div className="px-6 md:px-12 lg:px-20 py-10">
+      <div className="container mx-auto py-10">
         <Breadcrumb items={[{ name: 'About', href: '/about' }]} />
 
         {/* Hero Section */}
@@ -36,10 +36,10 @@ export default function AboutPage() {
               Sharing the Joy of Handmade Creations
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              Welcome to Cozy Stitches! I&apos;m Emma Wilson, a passionate crochet teacher and pattern designer with over 10 years of experience helping crafters bring their creative visions to life.
+              Hi, I&apos;m Sarah — the hands and heart behind Stetchlies. At 40 years old, I&apos;ve turned my lifelong love for crochet into a cozy little space where creativity, comfort, and handmade charm come together.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              What started as a hobby during college has grown into a full-time passion. I believe that everyone can learn to crochet, and I&apos;m here to guide you every step of the way with clear tutorials, tested patterns, and honest advice.
+              What started as a relaxing hobby quickly became a true passion, inspiring me to create patterns, tutorials, and crochet ideas for makers of all skill levels.
             </p>
             <Link href="/contact">
               <Button className="rounded-full">
@@ -51,7 +51,7 @@ export default function AboutPage() {
           <div className="relative aspect-square rounded-2xl overflow-hidden">
             <Image
               src="/images/about-author.jpg"
-              alt="Emma Wilson, crochet teacher and pattern designer"
+              alt="Sarah, the hands and heart behind Stetchlies"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -60,22 +60,6 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Stats */}
-        <section className="grid grid-cols-2 md:grid-cols-4 gap-6 py-12">
-          {[
-            { number: '500+', label: 'Free Patterns' },
-            { number: '100K+', label: 'Monthly Readers' },
-            { number: '10+', label: 'Years Teaching' },
-            { number: '50K+', label: 'Newsletter Subscribers' },
-          ].map((stat) => (
-            <Card key={stat.label} className="text-center">
-              <CardContent className="pt-6">
-                <p className="font-serif text-3xl md:text-4xl font-bold text-primary">{stat.number}</p>
-                <p className="text-muted-foreground mt-2">{stat.label}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </section>
 
         {/* Mission */}
         <section className="py-12">
@@ -110,7 +94,7 @@ export default function AboutPage() {
                 </div>
                 <h3 className="font-serif text-xl font-bold text-foreground mb-2">Quality First</h3>
                 <p className="text-muted-foreground">
-                  From beginner guides to advanced techniques, we ensure every piece of content meets the highest standards.
+                  From beginner guides to adorable amigurumi designs, I ensure every piece of content meets the highest standards.
                 </p>
               </CardContent>
             </Card>
@@ -122,16 +106,13 @@ export default function AboutPage() {
           <h2 className="font-serif text-3xl font-bold text-foreground text-center mb-8">My Story</h2>
           <div className="prose prose-lg max-w-none text-muted-foreground">
             <p>
-              My crochet journey began when my grandmother taught me the basics during a rainy summer vacation. I was immediately hooked (pun intended!) by the meditative rhythm of the stitches and the magic of watching yarn transform into something beautiful.
+              Through Stetchlies, I share adorable amigurumi designs, simple step-by-step guides, and creative inspiration to help others discover the joy of crochet. I believe every stitch tells a story, and there&apos;s something special about creating handmade pieces filled with love and personality.
             </p>
             <p>
-              Over the years, I&apos;ve taught hundreds of students in local workshops and online classes. I&apos;ve learned that the best way to teach crochet is to break down complex techniques into simple, manageable steps that anyone can follow.
+              When I&apos;m not crocheting with a warm cup of coffee nearby, you&apos;ll usually find me exploring new yarns, testing fresh ideas, or connecting with fellow crochet lovers from around the world.
             </p>
             <p>
-              Cozy Stitches was born from my desire to reach more crafters around the world. Whether you&apos;re making your first chain stitch or designing your own patterns, I want this site to be your go-to resource for inspiration, education, and community.
-            </p>
-            <p>
-              When I&apos;m not crocheting, you&apos;ll find me tending to my garden, exploring yarn shops around the world, or cuddling with my cat Buttons (who has very strong opinions about yarn quality).
+              Thank you for being here and supporting this creative journey — I hope Stetchlies inspires you to pick up your hook and create something beautiful. 💕
             </p>
           </div>
         </section>
@@ -140,7 +121,7 @@ export default function AboutPage() {
         <section className="bg-primary text-primary-foreground rounded-2xl p-8 md:p-12 text-center">
           <h2 className="font-serif text-3xl font-bold mb-4">Ready to Start Creating?</h2>
           <p className="opacity-90 mb-8 max-w-2xl mx-auto">
-            Join thousands of crafters who are learning to crochet and creating beautiful handmade pieces with our free patterns and tutorials.
+            Join fellow crafters who are learning to crochet and creating beautiful handmade pieces with my patterns and tutorials.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/blog">

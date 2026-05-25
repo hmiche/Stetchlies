@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from 'next'
-import { DM_Serif_Display, Nunito, Fira_Code } from 'next/font/google'
+import { DM_Serif_Display, Inter, Fira_Code } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import Link from 'next/link'
+import Script from 'next/script'
 import { Home, BookOpen, Bookmark, User } from 'lucide-react'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Header } from '@/components/layout/header'
@@ -15,7 +16,7 @@ const dmSerifDisplay = DM_Serif_Display({
   display: 'swap',
 })
 
-const nunito = Nunito({
+const inter = Inter({
   subsets: ['latin'],
   variable: '--font-sans',
   display: 'swap',
@@ -73,10 +74,9 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.ico' },
-      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/nav-icon.png' },
     ],
-    apple: '/apple-icon.png',
+    apple: '/nav-icon.png',
   },
 }
 
@@ -95,7 +95,25 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${dmSerifDisplay.variable} ${nunito.variable} ${firaCode.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${dmSerifDisplay.variable} ${inter.variable} ${firaCode.variable}`} suppressHydrationWarning>
+      <head>
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-3G9LQ7LHB8"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-3G9LQ7LHB8');
+            `,
+          }}
+        />
+      </head>
       <body className="font-sans antialiased min-h-screen bg-stone-100/60 text-foreground selection:bg-ami-forest/10 selection:text-ami-forest">
         <ThemeProvider
           attribute="class"

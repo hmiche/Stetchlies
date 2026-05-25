@@ -26,7 +26,7 @@ export default async function SearchPage() {
         ]}
       />
 
-      <div className="px-6 md:px-12 lg:px-20 py-10">
+      <div className="container mx-auto py-10">
         <Breadcrumb items={[{ name: 'Search', href: '/search' }]} />
 
         <div className="mb-8">

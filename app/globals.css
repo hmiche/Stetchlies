@@ -7,11 +7,11 @@
 :root {
   /* Core palette - Clean & Bright */
   --background: oklch(0.985 0.002 260);      /* Very light cool white */
-  --foreground: oklch(0.18 0.02 260);        /* Deep blue-gray */
+  --foreground: #1a1a1a;                     /* Deep blue-gray to near-black */
   
   /* Surface colors */
   --card: oklch(0.995 0.001 260);            /* Pure white cards */
-  --card-foreground: oklch(0.18 0.02 260);
+  --card-foreground: #1a1a1a;
   --popover: oklch(0.995 0.001 260);
   --popover-foreground: oklch(0.18 0.02 260);
   
@@ -104,7 +104,7 @@
 }
 
 @theme inline {
-  --font-sans: 'Nunito', 'Nunito Fallback', system-ui, sans-serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
   --font-serif: 'DM Serif Display', 'DM Serif Display Fallback', Georgia, serif;
   --font-mono: 'Fira Code', 'Fira Code Fallback', monospace;
   
@@ -189,6 +189,18 @@
 
 .prose :where(h1, h2, h3, h4, h5, h6) {
   @apply font-serif;
+}
+
+/* Explicit overrides for standard typography scale */
+.prose h1, .prose h2 {
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+}
+
+.prose p, .prose ul, .prose ol {
+  font-size: 1rem !important;
+  line-height: 1.65 !important;
 }
 
 .prose :where(a) {

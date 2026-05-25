@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, Search, X } from 'lucide-react'
+import { Menu, Search, X, Heart } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { ThemeToggle } from '@/components/layout/theme-toggle'
@@ -34,9 +34,36 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-stone-200/50 bg-background/80 backdrop-blur-md">
-      <div className="px-6 md:px-12 lg:px-20">
-        {/* Main nav row */}
+    <>
+      {/* Top Colorful Border */}
+      <div className="h-1.5 w-full bg-[repeating-linear-gradient(90deg,#65bcae_0%,#65bcae_25%,#f49e65_25%,#f49e65_50%,#e83e8c_50%,#e83e8c_75%,#8bb2d4_75%,#8bb2d4_100%)]" />
+      
+      {/* Top Social/CTA Bar */}
+      <div className="w-full bg-[#65bcae]">
+        <div className="container mx-auto h-10 flex items-center justify-between">
+          {/* Social Icons */}
+          <div className="flex h-full items-center pl-4 sm:pl-0">
+            <a href="#" className="flex items-center justify-center w-10 h-full bg-[#f49e65] text-white hover:bg-[#e08f5a] transition-colors">
+              <svg className="w-[18px] h-[18px] fill-current" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href="#" className="flex items-center justify-center w-10 h-full bg-[#e83e8c] text-white hover:bg-[#d8327d] transition-colors">
+              <svg className="w-[18px] h-[18px] fill-current" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345l-.288 1.178c-.046.19-.152.232-.35.139-1.309-.607-2.129-2.522-2.129-4.062 0-3.308 2.403-6.347 6.937-6.347 3.639 0 6.471 2.593 6.471 6.059 0 3.615-2.277 6.525-5.441 6.525-1.063 0-2.062-.553-2.403-1.205l-.655 2.497c-.237.904-.877 2.036-1.307 2.727 1.054.321 2.168.495 3.32.495 6.621 0 11.988-5.365 11.988-11.987C24 5.367 18.638 0 12.017 0z"/></svg>
+            </a>
+          </div>
+          
+          {/* Join CTA */}
+          <div className="relative h-full hidden sm:block">
+            <a href="#newsletter-signup" className="absolute top-0 right-4 lg:right-0 flex items-center justify-center bg-[#e83e8c] text-white px-6 h-[46px] font-bold text-[13px] tracking-wider uppercase hover:bg-[#d8327d] transition-colors rounded-b-2xl shadow-md z-50 whitespace-nowrap">
+              <Heart className="w-4 h-4 mr-2 fill-current" />
+              Join Our Crochet Corner!
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <header className="sticky top-0 z-50 w-full border-b border-stone-200/50 bg-background/95 backdrop-blur-md">
+        <div className="container mx-auto">
+          {/* Main nav row */}
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group py-1">
@@ -135,5 +162,6 @@ export function Header() {
         </div>
       </div>
     </header>
+    </>
   )
 }

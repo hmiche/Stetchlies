@@ -10,8 +10,18 @@ interface ArticleCardProps {
 }
 
 export function ArticleCard({ post, featured = false }: ArticleCardProps) {
-  // Use metadata or difficulty if available, fallback to BEGINNER
-  const levelText = (post.metadata || post.difficulty || 'BEGINNER').toUpperCase()
+  let rawLevel = post.difficulty || 'BEGINNER'
+  if (post.metadata) {
+    try {
+      const parsed = typeof post.metadata === 'string' ? JSON.parse(post.metadata) : post.metadata
+      if (parsed?.DIFFICULTY) rawLevel = parsed.DIFFICULTY
+      else if (parsed?.difficulty) rawLevel = parsed.difficulty
+      else if (!post.difficulty && typeof post.metadata === 'string') rawLevel = post.metadata
+    } catch (e) {
+      if (!post.difficulty && typeof post.metadata === 'string') rawLevel = post.metadata
+    }
+  }
+  const levelText = String(rawLevel).toUpperCase()
 
   return (
     <Card className={`group bg-white rounded-[20px] shadow-sm hover:shadow-xl border border-stone-200 overflow-hidden transition-all duration-300 ${featured ? 'md:flex md:min-h-[400px]' : ''}`}>

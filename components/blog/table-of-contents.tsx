@@ -51,10 +51,10 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
             <Link
               href={`#${heading.id}`}
               className={cn(
-                'text-sm block py-1 transition-colors border-l-2 pl-3 -ml-px',
+                'text-[0.875rem] block py-1 transition-colors border-l-2 pl-3 -ml-px',
                 activeId === heading.id
-                  ? 'text-primary border-primary font-medium'
-                  : 'text-muted-foreground border-transparent hover:text-foreground hover:border-border'
+                  ? 'text-primary border-primary font-bold'
+                  : 'text-muted-foreground border-transparent hover:text-foreground hover:border-border font-normal'
               )}
             >
               {heading.text}

@@ -22,7 +22,7 @@ export default function PrivacyPolicyPage() {
         ]}
       />
 
-      <div className="px-6 md:px-12 lg:px-20 py-10">
+      <div className="container mx-auto py-10">
         <Breadcrumb items={[{ name: 'Privacy Policy', href: '/privacy-policy' }]} />
 
         <div className="max-w-3xl mx-auto">

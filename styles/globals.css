@@ -13,11 +13,13 @@
   --popover-foreground: oklch(0.20 0.02 290);
 
   /* Primary: Hot pink / magenta — the signature amigurumi accent */
-  --primary: oklch(0.55 0.28 350);   /* #e91e8c hot pink */
+  --primary: oklch(0.55 0.28 350);
+  /* #e91e8c hot pink */
   --primary-foreground: oklch(1 0 0);
 
   /* Secondary: Teal/green — used for stat highlights */
-  --secondary: oklch(0.52 0.14 180); /* teal #009B8D */
+  --secondary: oklch(0.52 0.14 180);
+  /* teal #009B8D */
   --secondary-foreground: oklch(1 0 0);
 
   --muted: oklch(0.97 0.008 355);
@@ -125,11 +127,16 @@
   --color-sidebar-ring: var(--sidebar-ring);
 
   /* Custom Editorial Colors — updated to match amigurumiscrochet.com palette */
-  --color-heading: #2d1b49;       /* Deep purple/indigo for headlines */
-  --color-ami-forest: #009B8D;    /* Teal — stat accent */
-  --color-ami-carrot: #e91e8c;    /* Hot pink — CTA buttons (replaces orange) */
-  --color-ami-carrot-hover: #c9177a; /* Darker hot pink on hover */
-  --color-ami-coffee: #2d1b49;    /* Deep purple — outline button text */
+  --color-heading: #2d1b49;
+  /* Deep purple/indigo for headlines */
+  --color-ami-forest: #009B8D;
+  /* Teal — stat accent */
+  --color-ami-carrot: #e91e8c;
+  /* Hot pink — CTA buttons (replaces orange) */
+  --color-ami-carrot-hover: #c9177a;
+  /* Darker hot pink on hover */
+  --color-ami-coffee: #2d1b49;
+  /* Deep purple — outline button text */
   --color-ami-btn-text: #ffffff;
 
   /* Custom Editorial Float Animations */
@@ -139,20 +146,51 @@
   --animate-hero-in: hero-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 
   @keyframes float-slow {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(15px, -25px) scale(1.05); }
+
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+      transform: translate(15px, -25px) scale(1.05);
+    }
   }
+
   @keyframes float-medium {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(-15px, -18px) scale(1.03); }
+
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+      transform: translate(-15px, -18px) scale(1.03);
+    }
   }
+
   @keyframes float-fast {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(8px, -12px) scale(1.02); }
+
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+      transform: translate(8px, -12px) scale(1.02);
+    }
   }
+
   @keyframes hero-in {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 
@@ -160,6 +198,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -176,23 +215,26 @@
 
 @utility container {
   margin-inline: auto;
-  padding-inline: 1.5rem;
+  padding-inline: 2.5rem;
   width: 100%;
-  
+
   @variant sm {
     max-width: 640px;
-    padding-inline: 2rem;
-  }
-  @variant md {
-    max-width: 768px;
-    padding-inline: 2.5rem;
-  }
-  @variant lg {
-    max-width: 1024px;
     padding-inline: 3rem;
   }
+
+  @variant md {
+    max-width: 768px;
+    padding-inline: 4rem;
+  }
+
+  @variant lg {
+    max-width: 1024px;
+    padding-inline: 5rem;
+  }
+
   @variant xl {
     max-width: 1200px;
-    padding-inline: 4rem;
+    padding-inline: 6rem;
   }
 }

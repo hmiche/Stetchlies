@@ -64,7 +64,7 @@ export default async function HomePage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-16 pb-20 md:pt-24 md:pb-32 bg-background">
-        <div className="px-6 md:px-12 lg:px-20">
+        <div className="container mx-auto">
           <div className="grid md:grid-cols-12 gap-12 lg:gap-8 items-center">
             {/* Left Content Column */}
             <div className="md:col-span-7">
@@ -150,17 +150,17 @@ export default async function HomePage() {
       </section>
 
       {/* Editorial Story Block */}
-      <section className="px-6 md:px-12 lg:px-20 py-20 border-t border-stone-200/50">
+      <section className="container mx-auto py-20 border-t border-stone-200/50">
         <div className="max-w-3xl mx-auto text-center space-y-6">
-          <h2 className="font-serif text-3xl md:text-4xl font-black text-heading tracking-tight">What is Cozy Stitches?</h2>
+          <h2 className="font-serif text-3xl md:text-4xl font-black text-heading tracking-tight">What is stetchlies?</h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Cozy Stitches is a dedicated space for the modern maker. We provide high-end, free amigurumi and crochet patterns with an editorial soul. Every pattern is tested and written the way we&apos;d write it for a friend — with detailed stitch guides, clear photos, and honest estimates. First keychain or jumbo blanket, no sign-up, no paywall. Pick one and start the spiral.
+            stetchlies is a dedicated space for the modern maker. I provide high-end, free amigurumi and crochet patterns with an editorial soul. Every pattern is tested and written the way I&apos;d write it for a friend — with detailed stitch guides, clear photos, and honest estimates. First keychain or jumbo blanket, no sign-up, no paywall. Pick one and start the spiral.
           </p>
         </div>
       </section>
 
       {/* Category Navigation Bar */}
-      <section className="px-6 md:px-12 lg:px-20 py-16 bg-stone-50/40 border-t border-stone-200/50">
+      <section className="container mx-auto py-16 bg-stone-50/40 border-t border-stone-200/50">
         <div className="flex items-center justify-between mb-10 max-w-7xl mx-auto">
           <div className="flex items-center gap-4">
             <div className="w-1.5 h-8 bg-[#d97706] rounded-full" />
@@ -207,7 +207,7 @@ export default async function HomePage() {
 
       {/* Three Steps Section */}
       <section className="bg-stone-50/60 py-24 border-y border-stone-200/50">
-        <div className="px-6 md:px-12 lg:px-20 max-w-6xl mx-auto">
+        <div className="container mx-auto max-w-6xl mx-auto">
           
           {/* Section Header */}
           <div className="flex flex-col items-center justify-center text-center mb-16 space-y-4">
@@ -280,7 +280,7 @@ export default async function HomePage() {
 
       {/* Featured Post Card Section */}
       {featuredPost && (
-        <section className="px-6 md:px-12 lg:px-20 py-20">
+        <section className="container mx-auto py-20">
           <div className="flex items-center justify-between mb-10">
             <h2 className="font-serif text-3xl font-black text-heading tracking-tight">Featured Pattern</h2>
             <Link href="/blog" className="text-primary hover:underline text-sm font-bold flex items-center uppercase tracking-wider">
@@ -292,7 +292,7 @@ export default async function HomePage() {
       )}
 
       {/* Latest Articles Grid */}
-      <section className="px-6 md:px-12 lg:px-20 py-20 bg-white border-t border-stone-200/50">
+      <section className="container mx-auto py-20 bg-white border-t border-stone-200/50">
         <div className="flex items-center justify-between mb-12 max-w-7xl mx-auto">
           <h2 className="font-serif text-3xl md:text-4xl font-black text-[#1a2332] tracking-tight">Latest Articles & Tutorials</h2>
         </div>
@@ -302,7 +302,7 @@ export default async function HomePage() {
       </section>
 
       {/* Spotlight: Free Pattern Spotlight + Popular list */}
-      <section className="px-6 md:px-12 lg:px-20 py-20 border-t border-stone-200/50">
+      <section className="container mx-auto py-20 border-t border-stone-200/50">
         <div className="grid lg:grid-cols-3 gap-12">
           {/* Spotlight Banner */}
           <div className="lg:col-span-2">
@@ -364,10 +364,10 @@ export default async function HomePage() {
 
       {/* Newsletter Signup Banner (Anchor-linked to from step 3) */}
       <section id="newsletter-signup" className="bg-primary text-primary-foreground border-y border-primary/20 relative overflow-hidden">
-        <div className="px-6 md:px-12 lg:px-20 py-20 relative z-10">
+        <div className="container mx-auto py-20 relative z-10">
           <div className="max-w-2xl mx-auto text-center space-y-6">
             <Mail className="h-12 w-12 mx-auto mb-2 opacity-90" />
-            <h2 className="font-serif text-3xl md:text-4xl font-black mb-4 tracking-tight">Join Our Crochet Community</h2>
+            <h2 className="font-serif text-3xl md:text-4xl font-black mb-4 tracking-tight">Join the Stetchlies Community</h2>
             <p className="opacity-90 text-lg leading-relaxed">
               Get free patterns, tutorials, and crafting tips delivered to your inbox every week. Plus, receive an exclusive beginner&apos;s guide when you sign up!
             </p>
@@ -395,12 +395,12 @@ export default async function HomePage() {
       </section>
 
       {/* About the Author Block */}
-      <section className="px-6 md:px-12 lg:px-20 py-20">
+      <section className="container mx-auto py-20">
         <div className="grid md:grid-cols-12 gap-12 items-center">
           <div className="md:col-span-5 relative aspect-square rounded-3xl overflow-hidden shadow-xl">
             <Image
               src="/images/about-author.jpg"
-              alt="Emma Wilson, crochet teacher and pattern designer"
+              alt="Sarah, the hands and heart behind Stetchlies"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 40vw"
@@ -408,13 +408,13 @@ export default async function HomePage() {
           </div>
           <div className="md:col-span-7 space-y-6">
             <h2 className="font-serif text-3xl md:text-4xl font-black text-heading tracking-tight">
-              About Cozy Stitches
+              About stetchlies
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Hi, I&apos;m Emma! After 10+ years of teaching crochet workshops and designing patterns, I created Cozy Stitches to share my love of yarn crafts with makers worldwide.
+              Hi, I&apos;m Sarah! At 40 years old, I&apos;ve turned my lifelong love for crochet into a cozy little space where creativity, comfort, and handmade charm come together.
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Whether you&apos;re picking up a hook for the first time or looking for your next challenging project, you&apos;ll find clear tutorials, tested patterns, and honest yarn reviews here.
+              Through Stetchlies, I share adorable amigurumi designs, simple step-by-step guides, and creative inspiration to help others discover the joy of crochet. I believe every stitch tells a story!
             </p>
             <div className="pt-2">
               <Link href="/about">
@@ -435,7 +435,7 @@ export default async function HomePage() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'WebSite',
-            name: 'Cozy Stitches',
+            name: 'stetchlies',
             url: process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com',
             potentialAction: {
               '@type': 'SearchAction',

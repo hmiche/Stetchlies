@@ -137,7 +137,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         ]}
       />
 
-      <article className="min-h-screen px-6 md:px-12 lg:px-20 py-10">
+      <article className="min-h-screen container mx-auto py-10">
         {/* Breadcrumb */}
         <div className="mb-6">
           <Breadcrumb
