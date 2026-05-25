@@ -113,13 +113,11 @@ export default function RootLayout({
             `,
           }}
         />
-        {/* Google AdSense */}
-        <Script
-          id="google-adsense"
+        {/* Google AdSense - placed directly in <head> for site verification */}
+        <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3437072595356707"
           crossOrigin="anonymous"
-          strategy="afterInteractive"
         />
       </head>
       <body className="font-sans antialiased min-h-screen bg-stone-100/60 text-foreground selection:bg-ami-forest/10 selection:text-ami-forest">
