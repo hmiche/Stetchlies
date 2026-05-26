@@ -113,9 +113,10 @@ export default function RootLayout({
             `,
           }}
         />
-        {/* Google AdSense - placed directly in <head> for site verification */}
-        <script
-          async
+        {/* Google AdSense */}
+        <Script
+          id="adsense"
+          strategy="afterInteractive"
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3437072595356707"
           crossOrigin="anonymous"
         />

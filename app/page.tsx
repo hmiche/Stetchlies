@@ -24,7 +24,7 @@ export default async function HomePage() {
   const featuredPosts = await getFeaturedPosts()
   const latestPosts = allPosts.slice(0, 6)
   const popularPosts = allPosts.slice(0, 5)
-  const featuredPost = featuredPosts[0] || allPosts[0]
+  const featuredPost = allPosts[0]
 
   const categoryMap = new Map<string, {
     name: string;
